@@ -13,37 +13,37 @@ import java.util.Optional;
 @CrossOrigin
 public class BurgerController {
 
-    private BurgerService burgerManager;
+	private BurgerService burgerManager;
 
-    @Autowired
-    public BurgerController(BurgerService burgerManager) {
-        this.burgerManager = burgerManager;
-    }
+	@Autowired
+	public BurgerController(BurgerService burgerManager) {
+		this.burgerManager = burgerManager;
+	}
 
-    @GetMapping
-    public Iterable<Burger> getAll() {
-        return burgerManager.findAll();
-    }
+	@GetMapping
+	public Iterable<Burger> getAll() {
+		return burgerManager.findAll();
+	}
 
-    @GetMapping("/{id}")
-    public Optional<Burger> getById(@RequestParam Long id) {
-        return burgerManager.findById(id);
-    }
+	@GetMapping("/{id}")
+	public Optional<Burger> getById(@RequestParam Long id) {
+		return burgerManager.findById(id);
+	}
 
-    @PostMapping
-    public Burger addVideo(@RequestBody Burger burger) {
-        return burgerManager.save(burger);
-    }
+	@PostMapping
+	public Burger addVideo(@RequestBody Burger burger) {
+		return burgerManager.save(burger);
+	}
 
-    @PutMapping
-    public Burger updateVideo(@RequestBody Burger burger) {
-        return burgerManager.save(burger);
-    }
+	@PutMapping
+	public Burger updateVideo(@RequestBody Burger burger) {
+		return burgerManager.save(burger);
+	}
 
-    @DeleteMapping
-    public void deleteVideo(@RequestParam Long index) {
-        burgerManager.deleteById(index);
-    }
+	@DeleteMapping
+	public void deleteVideo(@RequestParam Long index) {
+		burgerManager.deleteById(index);
+	}
 }
 
 
