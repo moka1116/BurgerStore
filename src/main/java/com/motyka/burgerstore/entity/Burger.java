@@ -5,11 +5,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import java.util.Set;
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
@@ -21,11 +18,14 @@ public class Burger {
 	@GeneratedValue(strategy = IDENTITY)
 	@Id
 	private Long id;
+
 	private String name;
 
+	@ManyToOne
+	@JoinColumn(name = "ingredient_id")
+	@NotNull
 	@JsonIgnore
-	@OneToMany(mappedBy = "burger")
-	private Set<Ingredient> ingredients;
+	private Ingredient ingredients;
 
 
 }
