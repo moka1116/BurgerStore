@@ -6,8 +6,9 @@ import lombok.NoArgsConstructor;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
 import javax.validation.constraints.NotNull;
+import java.util.HashSet;
 import java.util.Set;
 
 import static javax.persistence.GenerationType.IDENTITY;
@@ -24,7 +25,8 @@ public class Ingredient {
 	@NotNull
 	private String name;
 
-	@OneToMany(mappedBy = "ingredients")
-	private Set<Burger> burgers;
+	@ManyToMany(mappedBy = "ingredients")
+	private Set<Burger> burgers = new HashSet<>();
+
 
 }

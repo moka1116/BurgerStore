@@ -1,13 +1,19 @@
-INSERT INTO ingredient("name")
-values ('tomato'),
-       ('lettuce'),
-       ('Cheese'),
-       ('Beacon'),
-       ('Jalapeno');
+INSERT INTO burger(name)
+VALUES ('Hamburger'),
+       ('Cheeseburger'),
+       ('BLT burger');
 
-INSERT INTO burger(name, ingredient_id)
-values ('BLT', 1),
-       ('Letucer', 2),
-       ('Cheese burger', 3),
-       ('Beconator', 4),
-       ('Hot and spicy', 5);
+INSERT INTO ingredient(name)
+VALUES ('Patty'),
+       ('Cheese'),
+       ('Tomato'),
+       ('Lettuce');
+
+INSERT INTO burger_ingredient(burger_id, ingredient_id)
+VALUES (1, 1),
+       (2, 1),
+       (2, 2),
+       (3, 1),
+       (3, 2),
+       (3, 3),
+       (3, 4);

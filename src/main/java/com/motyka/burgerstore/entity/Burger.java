@@ -1,12 +1,12 @@
 package com.motyka.burgerstore.entity;
 
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
+import java.util.HashSet;
+import java.util.Set;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
@@ -21,11 +21,15 @@ public class Burger {
 
 	private String name;
 
-	@ManyToOne
-	@JoinColumn(name = "ingredient_id")
-	@NotNull
-	@JsonIgnore
-	private Ingredient ingredients;
+	@ManyToMany(cascade = {
+			CascadeType.PERSIST,
+			CascadeType.MERGE
+	})
+	@JoinTable(name = "burger_ingredient",
+			joinColumns = @JoinColumn(name = "burger_id"),
+			inverseJoinColumns = @JoinColumn(name = "ingredient_id")
+	)
+	private Set<Ingredient> ingredients = new HashSet<>();
 
 
 }
